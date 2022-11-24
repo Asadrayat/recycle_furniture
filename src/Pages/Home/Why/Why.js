@@ -5,7 +5,9 @@ const Why = () => {
         <div>
             <div className="hero">
                 <div className="hero-content flex-col lg:flex-row">
+
                     <img src={img} className="rounded-lg lg:w-1/2 shadow-2xl" alt="" />
+
                     <div>
                         <div className='hero-content flex-col lg:flex-row'>
                             <p className='text-9xl font-bold'>1</p>

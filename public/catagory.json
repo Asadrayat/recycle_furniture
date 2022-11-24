@@ -2,19 +2,19 @@
     {
       "id": 1,
       "name": "Bedroom",
-      "icon": "https://ibb.co/h8KzSsL",
+      "icon": "https://i.ibb.co/SvKCzN5/bedroom.webp",
       "bgClass": "bg-gradient-to-r from-warning to-accent"
     },
     {
       "id": 2,
       "name": "Living",
-      "icon": "https://ibb.co/D1mvp3q",
+      "icon": "https://i.ibb.co/p1NMyCm/living.jpg",
       "bgClass": "bg-gradient-to-r from-warning to-accent"
     },
     {
       "id": 3,
       "name": "Dining",
-      "icon": "https://ibb.co/SyrGCX9",
+      "icon": "https://i.ibb.co/C82DG5T/dining.jpg",
       "bgClass": "bg-gradient-to-r from-warning to-accent"
     }
   ]
