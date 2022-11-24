@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "name": "Bedroom",
+      "icon": "https://ibb.co/h8KzSsL",
+      "bgClass": "bg-gradient-to-r from-warning to-accent"
+    },
+    {
+      "id": 2,
+      "name": "Living",
+      "icon": "https://ibb.co/D1mvp3q",
+      "bgClass": "bg-gradient-to-r from-warning to-accent"
+    },
+    {
+      "id": 3,
+      "name": "Dining",
+      "icon": "https://ibb.co/SyrGCX9",
+      "bgClass": "bg-gradient-to-r from-warning to-accent"
+    }
+  ]
