@@ -58,12 +58,16 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
-                    <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
+                    <select required className="my-4" {...register("select")}>
+                        <option value="seller">seller</option>
+                        <option value="user">user</option>
+                    </select>
+                    <input className='btn btn-warning bg-gradient-to-r from-warning to-error text-white w-full mt-4' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
-                <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
+                <p className="my-2">Already have an account <Link className='text-error' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-outline btn-warning w-full'>CONTINUE WITH GOOGLE</button>
 
             </div>
         </div>
