@@ -2,13 +2,14 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Authprovider/Authprovider";
 
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser , providerLogin } = useContext(AuthContext);
+    const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
     const handleSignUp = (data) => {
         console.log(data.type);
@@ -20,16 +21,34 @@ const SignUp = () => {
                 toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.displayName,
+                    email: data.email,
                     type: data.type
                 }
                 updateUser(userInfo)
                     .then(() => { })
+                saveUser(data.displayName, data.email, data.type)
                     .catch(err => console.log(err));
             })
             .catch(error => {
                 console.log(error)
                 setSignUPError(error.message)
             });
+
+    }
+    const saveUser = (name, email, type) => {
+        const user = { name, email, type };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(name,email);
+                navigate('/')
+            })
     }
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
@@ -72,8 +91,8 @@ const SignUp = () => {
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
                     <select required className="my-4" {...register("type")}>
-                        <option value="seller">seller</option>
                         <option value="user">user</option>
+                        <option value="seller">seller</option>
                     </select>
                     <input className='btn btn-warning bg-gradient-to-r from-warning to-error text-white w-full mt-4' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
