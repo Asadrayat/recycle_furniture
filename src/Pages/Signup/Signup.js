@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -7,18 +8,19 @@ import { AuthContext } from "../../Context/Authprovider/Authprovider";
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser , providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
     const handleSignUp = (data) => {
-        console.log(data);
+        console.log(data.type);
         setSignUPError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.displayName, data.type)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast('User Created Successfully.')
                 const userInfo = {
-                    displayName: data.name
+                    displayName: data.displayName,
+                    type: data.type
                 }
                 updateUser(userInfo)
                     .then(() => { })
@@ -29,6 +31,17 @@ const SignUp = () => {
                 setSignUPError(error.message)
             });
     }
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+            });
+    }
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -37,7 +50,7 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Name</span></label>
-                        <input type="text" {...register("name", {
+                        <input type="text" {...register("displayName", {
                             required: "Name is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
@@ -58,7 +71,7 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
-                    <select required className="my-4" {...register("select")}>
+                    <select required className="my-4" {...register("type")}>
                         <option value="seller">seller</option>
                         <option value="user">user</option>
                     </select>
@@ -67,7 +80,7 @@ const SignUp = () => {
                 </form>
                 <p className="my-2">Already have an account <Link className='text-error' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline btn-warning w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline btn-warning w-full'>CONTINUE WITH GOOGLE</button>
 
             </div>
         </div>

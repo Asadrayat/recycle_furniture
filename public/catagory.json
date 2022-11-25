@@ -1,20 +1,25 @@
 [
-    {
-      "id": 1,
-      "name": "Bedroom",
-      "icon": "https://i.ibb.co/SvKCzN5/bedroom.webp",
-      "bgClass": "bg-gradient-to-r from-warning to-accent"
-    },
-    {
-      "id": 2,
-      "name": "Living",
-      "icon": "https://i.ibb.co/p1NMyCm/living.jpg",
-      "bgClass": "bg-gradient-to-r from-warning to-accent"
-    },
-    {
-      "id": 3,
-      "name": "Dining",
-      "icon": "https://i.ibb.co/C82DG5T/dining.jpg",
-      "bgClass": "bg-gradient-to-r from-warning to-accent"
-    }
-  ]
+  {
+    "original_price": "$1,717.89",
+    "resale_price": "$2,536.43",
+    "picture": "https://i.ibb.co/yQ054Tj/dining.jpg",
+    
+    "catagory" : "dining",
+    "title": "Dining Table",
+    "seller": "Bishop Huber",
+    "location": "743 Ruby Street, Austinburg, Oklahoma, 1515",
+    "about": "Veniam id fugiat proident aliquip eu eiusmod enim officia ad. Ut laboris reprehenderit id velit quis pariatur do proident mollit qui incididunt aliquip Lorem enim. Ea commodo voluptate eu elit. Cupidatat eu est et exercitation elit amet. Laborum nisi minim ad officia sint tempor exercitation eiusmod adipisicing eu sit Lorem reprehenderit. Dolor magna non ullamco cupidatat officia pariatur fugiat non sit exercitation minim aute id Lorem.\r\n",
+    "posted": "2022-08 06:00pm"
+  },
+  {
+    "original_price": "$1,925.62",
+    "resale_price": "$1,223.95",
+    "picture": "https://i.ibb.co/685mxbg/dsofa.jpg",
+    "catagory" : "dining",
+    "title": "Dining sofa",
+    "seller": "Harvey Hayden",
+    "location": "457 Milton Street, Walland, Guam, 5016",
+    "about": "Adipisicing eu labore consectetur proident. Occaecat dolor id officia eiusmod amet est nostrud consequat eiusmod laborum. Amet ad qui ullamco aliquip velit elit nostrud mollit veniam deserunt. Elit nostrud cillum enim elit elit laborum incididunt minim mollit nostrud. Aliquip culpa cillum cupidatat aliquip consectetur pariatur ea non non eu. Elit voluptate exercitation elit ullamco est eu occaecat officia.\r\n",
+    "posted": "2022-08-01 06:00pm"
+  }
+]
