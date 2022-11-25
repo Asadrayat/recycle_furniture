@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/Authprovider/Authprovider';
 
-const BookingModal = ({ furnitureOption }) => {
+const BookingModal = ({ furnitureOption,setFurnitureOption,refetch }) => {
     const { catagory, location, picture, used, _id, title, seller, resale_price, posted, original_price, about } = furnitureOption;
     const { user } = useContext(AuthContext);
     const handleBooking = event => {
@@ -14,17 +15,37 @@ const BookingModal = ({ furnitureOption }) => {
         console.log(displayName);
         const email = form.email.value;
         const phone = form.phone.value;
-        console.log(resale_price,title,pickup, displayName, email, phone);
+        // console.log(resale_price,title,pickup, displayName, email, phone);
 
-        // const booking = {
-        //     name: title,
-        //     treatement: treatementName,
-        //     patient: displayName,
-        //     phone,
-        //     price,
-        //     email,
-        //     slot,
-        // }
+        const booking = {
+            title,
+            seller: displayName,
+            resale_price,
+            phone,
+            pickup,
+            email,
+
+        }
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setFurnitureOption(null);
+                    toast.success('Booking confirm')
+                    refetch();
+                }
+                else {
+                    toast.error(data.message)
+                }
+
+            })
     }
     return (
         <div>

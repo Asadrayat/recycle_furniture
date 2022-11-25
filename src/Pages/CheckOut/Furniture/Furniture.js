@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import BookingModal from '../BookingModal/BookingModal';
+import React  from 'react';
 
-const Furniture = ({ furniture, setFurnitureOption }) => {
+
+const Furniture = ({ furniture, setFurnitureOption ,refetch }) => {
     const { catagory, location, picture, used, _id, title, seller, resale_price, posted, original_price, about } = furniture;
     // console.log(furniture);
     return (

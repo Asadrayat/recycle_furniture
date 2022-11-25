@@ -7,7 +7,7 @@ import Furniture from './Furniture/Furniture';
 const CheckOut = () => {
     const { name } = useLoaderData();
     const [furnitureOption, setFurnitureOption] = useState([]);
-    const { data: furnitures = [] } = useQuery({
+    const { data: furnitures = [], refetch } = useQuery({
         queryKey: ['furnitures'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/${name}`);
@@ -29,8 +29,10 @@ const CheckOut = () => {
             {
                 furnitureOption &&
                 <BookingModal
-                key={furnitures._id}
-                furnitureOption={furnitureOption}
+                    refetch={refetch}
+                    key={furnitures._id}
+                    furnitureOption={furnitureOption}
+                    setFurnitureOption={setFurnitureOption}
                 ></BookingModal>
             }
         </section>
