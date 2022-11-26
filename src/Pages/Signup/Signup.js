@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Authprovider/Authprovider";
+import useToken from "../../Hooks/UseToken/UseToken";
 
 
 const SignUp = () => {
@@ -11,6 +12,11 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    if (token) {
+        navigate('/')
+    }
     const handleSignUp = (data) => {
         console.log(data.type);
         setSignUPError('');
@@ -46,8 +52,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(name,email);
-                navigate('/')
+                setCreatedUserEmail(email)
             })
     }
     const googleProvider = new GoogleAuthProvider();

@@ -1,5 +1,6 @@
 import Blog from "../Blog/Blog";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import Allusers from "../Pages/Home/Dashboard/Allusers/Allusers";
 import Why from "../Pages/Home/Why/Why";
 import Login from "../Pages/Login/Login";
 import DashboardLayout from "../Shared/DashboardLayout/DashboardLayout";
@@ -56,10 +57,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/dashboard',
                 element: <MyAppointment></MyAppointment>
             },
-        //     {
-        //         path: '/dashboard/allusers',
-        //         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-        //     },
+            {
+                path: '/dashboard/allusers',
+                element: <Allusers></Allusers>
+            },
         //     {
         //         path: '/dashboard/managedoctors',
         //         element: <AdminRoute><ManageDoctor></ManageDoctor></AdminRoute>
