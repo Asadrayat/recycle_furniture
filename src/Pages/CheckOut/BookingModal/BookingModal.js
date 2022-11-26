@@ -24,6 +24,7 @@ const BookingModal = ({ furnitureOption,setFurnitureOption,refetch }) => {
             phone,
             pickup,
             email,
+            picture
 
         }
         fetch('http://localhost:5000/bookings', {
@@ -57,6 +58,7 @@ const BookingModal = ({ furnitureOption,setFurnitureOption,refetch }) => {
                         <h3 className="text-lg font-bold">Furniture</h3>
                         <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                             <input name="title" type="text" defaultValue={title} disabled className="input w-full input-bordered" />
+                            <input name="picturer" type="text" defaultValue={picture} disabled className="input w-full input-bordered" />
                             <input name="resale_price" type="text" defaultValue={resale_price} disabled className="input w-full input-bordered" />
 
                             <input name="displayName" type="text" defaultValue={user?.displayName} placeholder="Your name" className="input w-full input-bordered" />

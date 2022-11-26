@@ -21,7 +21,7 @@ const Login = () => {
         navigate(from, { replace: true });
     }
     const handleLogin = data => {
-        console.log(data);
+        console.log(data.email);
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {

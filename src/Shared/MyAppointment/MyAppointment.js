@@ -11,9 +11,9 @@ const MyAppointment = () => {
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
-                // headers: {
-                //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                // }
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
             });
             const data = await res.json();
             return data;
@@ -28,9 +28,8 @@ const MyAppointment = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Image</th>
                             <th>Title</th>
-                            <th>Seller</th>
-                            <th>Pickup</th>
                             <th>Price</th>
                             <th>Payment</th>
                         </tr>
@@ -39,9 +38,8 @@ const MyAppointment = () => {
                         {
                             bookings?.map((booking, i) => <tr>
                                 <th>{i+1}</th>
+                                <td><img src={booking.picture}  className="mask mask-cicle w-24 " alt="" /></td>
                                 <td>{booking.title}</td>
-                                <td>{booking.seller}</td>
-                                <td>{booking.pickup}</td>
                                 <td>{booking.resale_price}</td>
                                 <td>
                                     {

@@ -7,7 +7,8 @@ import DashboardLayout from "../Shared/DashboardLayout/DashboardLayout";
 import DisplayError from "../Shared/DisplayError/DisplayError";
 import MyAppointment from "../Shared/MyAppointment/MyAppointment";
 import PrivateRoute from "./PrivateRoute";
-import Privateroute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <Allusers></Allusers>
+                element: <AdminRoute><Allusers></Allusers></AdminRoute>
             },
         //     {
         //         path: '/dashboard/managedoctors',
