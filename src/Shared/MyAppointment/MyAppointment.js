@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/Authprovider/Authprovider";
 
 
@@ -22,7 +21,7 @@ const MyAppointment = () => {
     console.log(bookings);
     return (
         <div>
-            <p className='text-3xl my-5'>My Appointment</p>
+            <p className='text-3xl my-5 text-center font-bold'>My Orders</p>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -41,20 +40,7 @@ const MyAppointment = () => {
                                 <td><img src={booking.picture}  className="mask mask-cicle w-24 " alt="" /></td>
                                 <td>{booking.title}</td>
                                 <td>{booking.resale_price}</td>
-                                <td>
-                                    {
-                                        booking.price && !booking.paid && <Link
-                                            to={`/dashboard/payment/${booking._id}`}
-                                        >
-                                            <button
-                                                className='btn btn-primary btn-sm'
-                                            >Pay</button>
-                                        </Link>
-                                    }
-                                    {
-                                        booking.price && booking.paid && <span className='text-green-500'>Paid</span>
-                                    }
-                                </td>
+                                <td><button className="btn btn-primary btn-sm">Pay</button></td>
                             </tr>)
                         }
                     </tbody>

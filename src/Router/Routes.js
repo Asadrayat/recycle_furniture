@@ -8,6 +8,8 @@ import DisplayError from "../Shared/DisplayError/DisplayError";
 import MyAppointment from "../Shared/MyAppointment/MyAppointment";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import AllUsers from "../Pages/Home/Dashboard/Allusers/Allusers";
+import AddProducts from "../Pages/Home/Dashboard/AddProducts/AddProducts";
 
 
 
@@ -60,16 +62,16 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <AdminRoute><Allusers></Allusers></AdminRoute>
+                element: <AllUsers></AllUsers>
             },
         //     {
         //         path: '/dashboard/managedoctors',
         //         element: <AdminRoute><ManageDoctor></ManageDoctor></AdminRoute>
         //     },
-        //     {
-        //         path: '/dashboard/adddoctor',
-        //         element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-        //     },
+            {
+                path: '/dashboard/addproduct',
+                element: <AddProducts></AddProducts>
+            },
         //     {
         //         path: '/dashboard/payment/:id',
         //         element: <Payment></Payment>,

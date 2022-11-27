@@ -16,9 +16,9 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, provider)
     }
-    const signIn = (email, password) => {
+    const signIn = (email, password ,type) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password ,type);
     }
 
     const updateUser = (userInfo) => {

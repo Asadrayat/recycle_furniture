@@ -23,7 +23,7 @@ const Login = () => {
     const handleLogin = data => {
         console.log(data.email);
         setLoginError('');
-        signIn(data.email, data.password)
+        signIn(data.email, data.password , data.type)
             .then(result => {
                 const user = result.user;
                 setLoginUserEmail(data.email);
