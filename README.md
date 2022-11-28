@@ -11,3 +11,9 @@ In the project you will see the below functionalities:
 - Authentication and Authorization
 - Buyer can buy pre-owned furniture ,Seller can add product and sell it in prefered price ,Admin can handle buyer ,seller .
 - User can book products, seller can sell products this requires lots of functional works and backened server loaded from mongodb
+
+## Admin User
+
+adminEmail: \<leo@messi.com\>
+
+adminPassword: \<LE@123\>
