@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/catagoryOptions/:id',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/catagoryOptions/${params.id}`)
+                loader: ({ params }) => fetch(`https://recycle-bin-server-rose.vercel.app/catagoryOptions/${params.id}`)
             },
             {
                 path: '/why',
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AdminRoute><SellerRoute><AddProducts></AddProducts></SellerRoute></AdminRoute>
+                element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
             },
             //     {
             //         path: '/dashboard/payment/:id',

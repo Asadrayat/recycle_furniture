@@ -5,7 +5,7 @@ const ProductCatagories = () => {
     const {data : catagories = []} = useQuery({
         queryKey: ['catagoryOptions'],
         queryFn: async()=>{
-            const res = await fetch('http://localhost:5000/catagoryOptions');
+            const res = await fetch('https://recycle-bin-server-rose.vercel.app/catagoryOptions');
             const data = await res.json();
             return data
         }

@@ -10,7 +10,7 @@ const CheckOut = () => {
     const { data: furnitures = [], refetch } = useQuery({
         queryKey: ['furnitures'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/${name}`);
+            const res = await fetch(`https://recycle-bin-server-rose.vercel.app/${name}`);
             const data = await res.json();
             return data
         }

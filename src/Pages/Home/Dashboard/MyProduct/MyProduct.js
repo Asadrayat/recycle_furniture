@@ -1,22 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../../Context/Authprovider/Authprovider";
 import ConfirmationModal from "../../../../Shared/ConfirmationModal/ConfirmationModal";
 import Loading from "../../../../Shared/Loading/Loading";
 
 const MyProduct = () => {
+    const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
     const closeModal = () => {
         setDeletingProduct(null);
     }
+    const url = `https://recycle-bin-server-rose.vercel.app/products?email=${user?.email}`;
+    const { data: Products = [],isLoading,refetch } = useQuery({
+        queryKey: ['products', user?.email],
+        queryFn: async () => {
+            const res = await fetch(url, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+            const data = await res.json();
+            return data;
+        }
+    })
 
-
-    const { data: Products, isLoading, refetch } = useQuery({
+    /* const { data: Products, isLoading, refetch } = useQuery({
 
         queryKey: ['product'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/products', {
+                const res = await fetch(`https://recycle-bin-server-rose.vercel.app/products?email=${user?.email}`, {
                     headers: {
                         authorization: `beare ${localStorage.getItem('accessToken')}`
                     }
@@ -28,9 +42,9 @@ const MyProduct = () => {
 
             }
         }
-    });
+    }); */
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://recycle-bin-server-rose.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -73,7 +87,7 @@ const MyProduct = () => {
                                     </div>
                                 </div></td>
                                 <td>{product.name}</td>
-                                <td>{product.condition.excelent ? "available": "sold"}</td>
+                                <td>{product.condition.excelent ? "available" : "sold"}</td>
                                 <td>{product.catagory}</td>
                                 <td>
                                     <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
