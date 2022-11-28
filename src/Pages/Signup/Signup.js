@@ -18,6 +18,18 @@ const SignUp = () => {
         navigate('/') 
         
     }
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+            });
+            saveUser()
+    }
     const handleSignUp = (data) => {
         console.log(data.role);
         setSignUPError('');
@@ -56,17 +68,7 @@ const SignUp = () => {
                 setCreatedUserEmail(email)
             })
     }
-    const googleProvider = new GoogleAuthProvider();
-    const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch(error => {
-                console.error(error)
-            });
-    }
+   
 
     return (
         <div className='h-[800px] flex justify-center items-center'>

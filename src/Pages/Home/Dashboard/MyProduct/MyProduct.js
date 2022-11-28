@@ -11,11 +11,10 @@ const MyProduct = () => {
     const closeModal = () => {
         setDeletingProduct(null);
     }
-    const url = `https://recycle-bin-server-rose.vercel.app/products?email=${user?.email}`;
     const { data: Products = [],isLoading,refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
-            const res = await fetch(url, {
+            const res = await fetch(`https://recycle-bin-server-rose.vercel.app/products?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -78,7 +77,7 @@ const MyProduct = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        { Products.length &&
                             Products.map((product, i) => <tr key={product._id}>
                                 <th>{i + 1}</th>
                                 <td><div className="avatar">

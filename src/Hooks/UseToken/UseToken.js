@@ -4,7 +4,7 @@ const useToken = email => {
     const [token, setToken] = useState('');
     useEffect(() => {
         if (email) {
-            fetch(`https://recycle-bin-server-rose.vercel.app/jwt?email=${email}`)
+            fetch(`https://recycle-bin-server-asadrayat.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {

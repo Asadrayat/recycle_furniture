@@ -35,6 +35,7 @@ const MyAppointment = () => {
                     </thead>
                     <tbody>
                         {
+                            bookings.length &&
                             bookings?.map((booking, i) => <tr>
                                 <th>{i+1}</th>
                                 <td><img src={booking.picture}  className="rounded-full w-24 " alt="" /></td>

@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import ConfirmationModal from '../../../../Shared/ConfirmationModal/ConfirmationModal'
+import ConfirmationModal from "../../../../Shared/ConfirmationModal/ConfirmationModal";
 
-const AllUsers = () => {
+
+const AllBuyers = () => {
     const [deletingUser, setDeletingUser] = useState(null);
+
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -16,7 +18,6 @@ const AllUsers = () => {
     const closeModal = () => {
         setDeletingUser(null);
     }
-
     const handleDeleteUser = user => {
         fetch(`https://recycle-bin-server-asadrayat.vercel.app/users/${user._id}`, {
             method: 'DELETE',
@@ -32,6 +33,7 @@ const AllUsers = () => {
                 }
             })
     }
+
     const handleMakeAdmin = id => {
         fetch(`https://recycle-bin-server-rose.vercel.app/users/admin/${id}`, {
             method: 'PUT',
@@ -64,7 +66,7 @@ const AllUsers = () => {
                     {
 
                         users.map((user, i) =>
-                            user.role === "seller" ?
+                            user.role === "user" ?
                                 <tr key={user._id}>
                                     <th>{i + 1}</th>
                                     <td>{user.name}</td>
@@ -91,8 +93,7 @@ const AllUsers = () => {
                 </ConfirmationModal>
             }
         </div>
-
     );
 };
 
-export default AllUsers;
+export default AllBuyers;

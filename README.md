@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Features and functionalities about Recycle-Furniture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live link Of the {roject} [Recycle-bin Furniture](https://recycle-bin-8bc7a.web.app/).
 
 ## Available Scripts
 
