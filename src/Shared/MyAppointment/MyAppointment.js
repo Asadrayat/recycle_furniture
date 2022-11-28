@@ -37,7 +37,7 @@ const MyAppointment = () => {
                         {
                             bookings?.map((booking, i) => <tr>
                                 <th>{i+1}</th>
-                                <td><img src={booking.picture}  className="mask mask-cicle w-24 " alt="" /></td>
+                                <td><img src={booking.picture}  className="rounded-full w-24 " alt="" /></td>
                                 <td>{booking.title}</td>
                                 <td>{booking.resale_price}</td>
                                 <td><button className="btn btn-primary btn-sm">Pay</button></td>

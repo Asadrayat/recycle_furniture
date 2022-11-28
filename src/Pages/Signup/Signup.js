@@ -19,9 +19,9 @@ const SignUp = () => {
         
     }
     const handleSignUp = (data) => {
-        console.log(data.type);
+        console.log(data.role);
         setSignUPError('');
-        createUser(data.email, data.password, data.displayName, data.type)
+        createUser(data.email, data.password, data.displayName, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -29,11 +29,11 @@ const SignUp = () => {
                 const userInfo = {
                     displayName: data.displayName,
                     email: data.email,
-                    type: data.type
+                    role: data.role
                 }
                 updateUser(userInfo)
                     .then(() => { })
-                saveUser(data.displayName, data.email, data.type)
+                saveUser(data.displayName, data.email, data.role)
                     .catch(err => console.log(err));
             })
             .catch(error => {
@@ -42,8 +42,8 @@ const SignUp = () => {
             });
 
     }
-    const saveUser = (name, email, type) => {
-        const user = { name, email, type };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -96,7 +96,7 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
-                    <select required className="my-4" {...register("type")}>
+                    <select required className="my-4" {...register("role")}>
                         <option value="user">user</option>
                         <option value="seller">seller</option>
                     </select>

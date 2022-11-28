@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import AllUsers from "../Pages/Home/Dashboard/Allusers/Allusers";
 import AddProducts from "../Pages/Home/Dashboard/AddProducts/AddProducts";
+import MyProduct from "../Pages/Home/Dashboard/MyProduct/MyProduct";
+import SellerRoute from "./SellerRout";
 
 
 
@@ -62,21 +64,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
-        //     {
-        //         path: '/dashboard/managedoctors',
-        //         element: <AdminRoute><ManageDoctor></ManageDoctor></AdminRoute>
-        //     },
+            {
+                path: '/dashboard/myproduct',
+                element: <MyProduct></MyProduct>
+            },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProducts></AddProducts>
+                element: <AdminRoute><SellerRoute><AddProducts></AddProducts></SellerRoute></AdminRoute>
             },
-        //     {
-        //         path: '/dashboard/payment/:id',
-        //         element: <Payment></Payment>,
-        //         loader: ({ params }) => fetch(`https://doctors-server-two.vercel.app/bookings/${params.id}`)
-        //     }
+            //     {
+            //         path: '/dashboard/payment/:id',
+            //         element: <Payment></Payment>,
+            //         loader: ({ params }) => fetch(`https://doctors-server-two.vercel.app/bookings/${params.id}`)
+            //     }
         ]
     },
 ])

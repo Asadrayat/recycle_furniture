@@ -8,17 +8,17 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const createUser = (email, password, name, type) => {
+    const createUser = (email, password, name, role) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password, name, type);
+        return createUserWithEmailAndPassword(auth, email, password, name, role);
     }
     const providerLogin = (provider) => {
         setLoading(true);
         return signInWithPopup(auth, provider)
     }
-    const signIn = (email, password ,type) => {
+    const signIn = (email, password ,role) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password ,type);
+        return signInWithEmailAndPassword(auth, email, password ,role);
     }
 
     const updateUser = (userInfo) => {

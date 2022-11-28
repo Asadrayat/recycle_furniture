@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Context/Authprovider/Authprovider";
 import UseAdmin from "../../Hooks/UseAdmin/UseAdmin";
+import UseSeller from "../../Hooks/UseSeller/UseSeller";
 import Nav from "../Nav/Nav";
 
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = UseAdmin(user?.email)
+    const [isAdmin] = UseAdmin(user?.email);
+    const [isSeller] = UseSeller(user?.email);
     // const [isAdmin] = useAdmin(user?.email);
     return (
         <div>
@@ -20,14 +22,21 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-yellow-50 text-base-content">
-                        <li><Link to='dashboard'>My Appointment</Link></li>
-                        <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                        <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+                        <li><Link to='dashboard'>My Bookings</Link></li>
+
+                        <li><Link to='/dashboard/myproduct'>My Product</Link></li>
 
                         {
                             isAdmin &&
                             <>
+                                {
+                                    isSeller &&
+                                    <>
+                                        <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+                                    </>
+                                }
 
+                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
                                 {/* <li><Link to='/dashboard/adddoctor'>Add Doctor</Link></li> */}
                                 {/* <li><Link to='/dashboard/managedoctors'>Manage Doctor</Link></li> */}
                             </>
