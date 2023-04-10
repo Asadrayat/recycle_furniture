@@ -5,7 +5,7 @@ const Furniture = ({ furniture, setFurnitureOption ,refetch }) => {
     const { catagory, location, picture, used, _id, title, seller, resale_price, posted, original_price, about } = furniture;
     // console.log(furniture);
     return (
-        <div className="card w-9/12 bg-base-100 shadow-xl">
+        <div className="card w-9/12 mx-auto bg-base-100 shadow-xl">
             <figure><img className='h-72 w-full' src={picture} alt="Truck" /></figure>
             <div className="card-body">
                 <h2 className="card-title">

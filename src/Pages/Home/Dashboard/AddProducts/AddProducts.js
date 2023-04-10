@@ -100,7 +100,7 @@ const AddProducts = () => {
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Email</span></label>
-                    <input type="email"  {...register("email", {
+                    <input type="email" disabled defaultValue={user?.email}   {...register("email", {
                         required: true
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
